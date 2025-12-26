@@ -1,96 +1,90 @@
-# TaskFlow: The Unified PHP-React Framework
+# Unified PHP-React Coexistence Template
 
-TaskFlow is a state-of-the-art web framework that bridges the gap between traditional **PHP Backend power** and **Modern React Frontend speed**. It provides a "Next.js-like" developer experience while keeping the simplicity and robustness of the PHP ecosystem.
+A high-performance, unified architecture that bridges the gap between **PHP's backend simplicity** and **React's frontend robustness**. This template provides a "Next.js-like" developer experience for the PHP ecosystem, allowing both stacks to coexist and communicate seamlessly in a single project.
 
-## ✨ What makes TaskFlow Special?
+## 🚀 The Philosophy: "Simplicity meets Robustness"
 
-Unlike separate Backend/Frontend setups, TaskFlow is a **Unified Architecture**:
+Traditional modern stacks often force a radical split between Backend and Frontend, leading to complex CORS issues, separate deployments, and fragmented workflows. 
 
-- **Single Entry Point**: Our custom-built `public/index.php` acts as an intelligent router. It handles API requests, serves static assets with proper MIME types, and manages SPA routing automatically.
-- **Eloquent ORM for React**: Leverage the world-class **Laravel Eloquent ORM** directly in your React project without the overhead of a full Laravel installation.
-- **Vite-PHP Synergy**: A custom dev-server setup that proxies API requests seamlessly, allowing you to build with Vite's HMR while hitting a real PHP backend.
-- **Production Ready**: Includes `.htaccess` for Apache and Nginx templates, ensuring your "React App" is as easy to deploy as any traditional PHP site.
+This template solves that by providing:
+- **Unified Entry Point**: A single `public/index.php` act as an intelligent router. It handles API requests, serves static assets with proper MIME types, and manages SPA routing automatically.
+- **Eloquent ORM for React**: Leverage **Laravel Eloquent ORM** directly in your React project for elegant data modeling without the overhead of a full framework.
+- **Zero-Config DX**: High-speed Vite development with an integrated PHP proxy loop. One command starts your entire stack.
+- **Production Ready**: Built-in support for Apache (`.htaccess`) and Nginx, making your modern React app as easy to deploy as a legacy PHP site.
 
 ---
 
-## 🛠️ Usage Instructions
+## 🛠️ Getting Started
 
 ### 1. Prerequisites
-
 - PHP 8.1+
 - Node.js & npm
 - Composer
 
-### 2. Setup
-
-Clone the repository and install all dependencies in one go:
-
+### 2. Installation & Setup
 ```bash
+# Install all dependencies
 npm install && composer install
-```
 
-### 2. Database Setup
-
-Initialize the SQLite database, run migrations, and add sample data:
-
-```bash
+# Setup local SQLite database
 touch database/database.sqlite
 npm run migrate
-npm run seed
 ```
 
-### 4. Direct Development (The Magic)
-
-Run the following command to start both the PHP backend and the Vite frontend simultaneously:
-
+### 3. Development
+Run the specialized dev-loop to start PHP and Vite concurrently:
 ```bash
 npm run dev
 ```
-
-- **Frontend**: [http://localhost:5173](http://localhost:5173) (With Hot Module Replacement)
+- **Frontend**: [http://localhost:5173](http://localhost:5173) (With Vite HMR)
 - **Backend API**: Running on `localhost:8000` (Proxied via `/api/*`)
 
-### 5. Production Build & Preview
+### 4. Demo Application (TaskFlow)
+This template includes a pre-built example called **TaskFlow** to demonstrate the framework's capabilities. 
+To see it in action:
+```bash
+npm run seed
+```
 
-When you're ready to deploy, generate the optimized build:
+---
 
+## 📦 Production & Deployment
+
+### Build the Project
 ```bash
 npm run build
 ```
 
-To preview the _actual_ production environment (including the PHP router):
-
+### Preview Local Production
+Test the *actual* production behavior (including the PHP router logic):
 ```bash
 npm run preview
 ```
-
-Visit [http://localhost:8008](http://localhost:8008).
 
 ---
 
 ## 📂 Architecture Overview
 
 ```text
-├── app/              # Eloquent Models (App\Models)
-├── database/         # SQLite persistent storage
-├── public/           # The Web Root
+├── app/              # PHP Models & Logic (App\Models)
+├── database/         # Data persistence & Migrations
+├── public/           # Unified Web Root
 │   ├── index.php     # THE BRAINS: API Router + Asset Server
-│   └── dist/         # Production build output
-├── src/              # React components & logic
-├── bootstrap.php     # Eloquent & Env Configuration
-└── package.json      # Command center for scripts
+│   └── dist/         # Compiled Production Assets
+├── src/              # React Frontend (HMR Enabled)
+├── bootstrap.php     # Framework Initialization
+└── package.json      # Unified Project Control
 ```
 
-## 📜 Available Scripts
+## 📜 Available Commands
 
-| Script            | Description                                                   |
-| :---------------- | :------------------------------------------------------------ |
-| `npm run dev`     | **Recommended Dev Loop**: Runs PHP and Vite concurrently.     |
-| `npm run build`   | Compiles your frontend for production.                        |
-| `npm run preview` | Runs the production code through the PHP router on port 8008. |
-| `npm run migrate` | Syncs your Eloquent models with the SQLite database.          |
-| `npm run seed`    | Populates the database with beautiful sample tasks.           |
+| Command | Action |
+| :--- | :--- |
+| `npm run dev` | Starts the unified development environment. |
+| `npm run build` | Generates optimized production assets. |
+| `npm run preview` | Previews the build using the unified PHP router. |
+| `npm run migrate` | Syncs Eloquent models with the database. |
+| `npm run seed` | Adds demo data to the example application. |
 
 ---
-
-Built for performance, scalability, and developer joy by **MrbeanDev**.
+Built with ❤️ by **MrbeanDev** for a better PHP+React ecosystem.

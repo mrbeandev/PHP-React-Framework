@@ -2,60 +2,56 @@
 
 ## Current State
 
-This workspace contains several project templates and a newly created PHP + React robust framework.
+This workspace contains the **Unified PHP-React Coexistence Framework**, a professional boilerplate designed to merge PHP's backend simplicity with React's frontend robustness.
 
-### Active Project: `php-react-app`
+### Active Project: `PHP-React Unified Coexistence Template`
 
-A Next.js-like unified framework combining PHP (Backend/Eloquent) and React (Frontend/Vite) into a single coexisting project.
+A "Next.js-like" unified architecture for the PHP ecosystem.
 
-#### Speciality & "The Magic"
-
-- **Unified Router**: `public/index.php` is the brain—it routes API requests, serves static files with correct MIME types, and handles SPA fallback.
-- **Eloquent in React**: First-class ORM support (Laravel Eloquent) inside a React ecosystem without the bloat of a full framework.
-- **DX Sync**: `npm run dev` merges two stacks into one reactive loop.
-- **MIME Robustness**: Native support for CSS, JS, WOFF2, WebP, etc., even when using a basic PHP development server.
+#### Key Architectural Goals
+- **Eliminate Fragmentation**: Use a single web root (`public/`) and a unified router (`index.php`) to handle the entire application lifecycle.
+- **Modern DX for PHP**: Bring Vite's Hot Module Replacement (HMR) and modern toolchains to traditional PHP environments.
+- **Eloquent Everywhere**: Provide a clean path to use Laravel's Eloquent ORM in a lightweight, non-framework-dependent way.
+- **Deployment Parity**: Ensure the development environment behaves like production by using a unified routing entry point.
 
 #### Folder Structure
 
-- `/app/Models`: Eloquent models.
-- `/src`: React source code and components.
-- `/static`: Vite static assets (favicon, etc.).
-- `/public`: The web root.
-    - `index.php`: The unified router and API controller.
-    - `/dist`: Build output from Vite (Production only).
-- `bootstrap.php`: Shared Eloquent and Environment setup.
-- `migrate.php`: Database schema management.
-- `package.json`: Unified dependencies and scripts.
+- `/app/Models`: Eloquent models and PHP business logic.
+- `/src`: React source code (React 19 + Tailwind 4).
+- `/public`: The web root (publicly accessible).
+    - `index.php`: The intelligent router (API + SPA + Static Assets).
+    - `/dist`: Compiled production assets.
+- `bootstrap.php`: Centralized initialization (Eloquent, Dotenv, Logging).
+- `migrate.php`: Database schema management script.
+- `seed.php`: Data seeding script for demo/testing.
 
 #### Setup & Usage
 
 1. **Installation**:
     ```bash
-    composer install
-    npm install
+    composer install && npm install
     ```
 2. **Database**:
     ```bash
-    npm run migrate # Syncs your Eloquent models with the SQLite database.
-    npm run seed # Populates the database with beautiful sample data.
+    touch database/database.sqlite
+    npm run migrate
+    npm run seed # Adds demo data for the 'TaskFlow' example
     ```
 3. **Development**:
-
     ```bash
     npm run dev
     ```
+    _Starts PHP (8000) and Vite (5173). Access via Vite URL for HMR._
 
-    _This starts both the PHP server (8000) and Vite server (5173). Access the app via Vite's URL for HMR._
-
-4. **Production Build**:
+4. **Production Build & Preview**:
     ```bash
     npm run build
+    npm run preview # Runs production code through the PHP router
     ```
-    _After building, the PHP server (on port 8000) will serve the production-ready React app directly._
 
 ## Coding Standards
 
-- Use Eloquent for all database operations.
-- All API routes MUST start with `/api` in `public/index.php`.
-- Use Shadcn UI for premium design aesthetics.
-- Keep PHP logic in `app/` and React logic in `src/`.
+- **ORM**: Use Eloquent for all database operations.
+- **Routing**: API routes must stay within the `/api` prefix in `public/index.php`.
+- **UI**: Prioritize Shadcn UI and premium Tailwind 4 aesthetics.
+- **Logging**: Use the unified logging setup; check `php_errors.log` for backend failures.
