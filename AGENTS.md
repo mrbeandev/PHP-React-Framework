@@ -13,6 +13,7 @@ A "Next.js-like" unified architecture for the PHP ecosystem.
 - **Modern DX for PHP**: Bring Vite's Hot Module Replacement (HMR) and modern toolchains to traditional PHP environments.
 - **Eloquent Everywhere**: Provide a clean path to use Laravel's Eloquent ORM in a lightweight, non-framework-dependent way.
 - **Deployment Parity**: Ensure the development environment behaves like production by using a unified routing entry point.
+- **Dynamic SEO**: Built-in support for server-side SEO injection, allowing dynamic metadata based on the current URI.
 
 #### Folder Structure
 
@@ -55,3 +56,17 @@ A "Next.js-like" unified architecture for the PHP ecosystem.
 - **Routing**: API routes must stay within the `/api` prefix in `public/index.php`.
 - **UI**: Prioritize Shadcn UI and premium Tailwind 4 aesthetics.
 - **Logging**: Use the unified logging setup; check `php_errors.log` for backend failures.
+
+## Dynamic SEO System
+
+The framework includes a powerful SEO injection system that works even for SPAs.
+
+1. **Configuration**:
+    - Toggle via the `settings` table: `enable_dynamic_seo` (1 or 0).
+    - Manage meta tags via the `seo` table.
+2. **How it works**:
+    - `public/index.php` intercepts requests to non-API routes.
+    - It matches the current URI against the `seo` table.
+    - If a match is found, it injects `<title>`, `<meta>`, and Open Graph tags into the HTML during the initial serve.
+3. **Seeding**:
+    - Use `php seed.php` to populate default SEO values for `/` and `/about`.
