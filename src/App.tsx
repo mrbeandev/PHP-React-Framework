@@ -16,7 +16,7 @@ interface Todo {
 	updated_at: string;
 }
 
-const API_BASE = "/api";
+const API_BASE = "/api/v1";
 
 function App() {
 	const [todos, setTodos] = useState<Todo[]>([]);
